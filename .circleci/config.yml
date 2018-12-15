@@ -9,9 +9,9 @@ jobs:
     - image: circleci/node
     steps:
     - line/notify:
-        message: "notification test for the Line orb"
-        sticker-package-id: 1
-        sticker-id: 1
+        message: "Notification test for the Line orb"
+        sticker-package-id: '1'
+        sticker-id: '1'
 
 workflows:
    main:
