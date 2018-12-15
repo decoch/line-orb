@@ -65,7 +65,7 @@ commands:
             fi
 
 #
-# Usage examples of Slack Orb
+# Usage examples of Line Orb
 #
 examples:
   notify:

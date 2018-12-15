@@ -19,3 +19,7 @@ jobs:
     steps:
       - line/notify
 ```
+
+## Generate line access token
+
+see: https://notify-bot.line.me/my/
