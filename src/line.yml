@@ -49,7 +49,7 @@ commands:
               if [ -n "<< parameters.mentions >>" ]; then
                 IFS="," read -ra LINE_MEMBERS \<<< "<< parameters.mentions >>"
                 for i in "${LINE_MEMBERS[@]}"; do
-                  LINE_MENTIONS="${LINE_MENTIONS}<@${i}> "
+                  LINE_MENTIONS="${LINE_MENTIONS}@${i} "
                 done
               fi
               curl -X POST -H "Authorization: Bearer << parameters.token >>" -d "message=${LINE_MENTIONS}<< parameters.message >>" https://notify-api.line.me/api/notify
