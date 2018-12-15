@@ -1,0 +1,12 @@
+version: 2.1
+description: A test orb with an example description.
+
+commands:
+  hello:
+    description: Greet the user politely
+    parameters:
+      username:
+        type: string
+        description: A name of the user to greet
+    steps:
+      - run: "echo 'CircleCI Orbs ミニハッカソンへようこそ、<< parameters.username >>！'"

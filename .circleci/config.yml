@@ -1,0 +1,16 @@
+version: 2.1
+
+orbs:
+  example: decoch/hello@dev:first
+
+jobs:
+  build:
+    docker:
+    - image: bash
+    steps:
+    - run: "echo 'testing building...'"
+
+ workflows:
+   main:
+     jobs:
+     - build

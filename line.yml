@@ -1,0 +1,41 @@
+version: 2.1
+
+description: |
+  Easily integrate custom Line notifications. Create custom messages for any job or receive status updates.
+
+## Requirements ##
+## - Bash
+## - cURL
+
+commands:
+  ## NOTIFY ##
+  notify:
+    description: Notify a line with a custom message
+    parameters:
+      webhook:
+        description: Enter either your Webhook value or use the CircleCI UI to add your token under the 'LINE_WEBHOOK' env var
+        type: string
+        default: ${LINE_WEBHOOK}
+      message:
+        description: Enter custom message.
+        type: string
+        default: Your job on CircleCI has completed.
+    steps:
+      - run:
+          name: Line Notification
+          command: |
+            # Provide error if non-bash shell
+            if [ $(echo $SHELL | grep -c bash) -ne 1 ]; then
+              echo Bash not installed.
+              exit 1
+            fi
+            # Provide error if no webhook is set and error. Otherwise continue
+            if [ -z "<< parameters.webhook >>" ]; then
+              echo "NO SLACK WEBHOOK SET"
+              echo "Please input your SLACK_WEBHOOK value either in the settings for this project, or as a parameter for this orb."
+              exit 1
+            else
+              # Webhook properly set.
+              echo Notifying Line
+              curl -X POST -H "Authorization: Bearer << parameters.webhook >>" -d 'message=hello' https://notify-api.line.me/api/notify
+            fi
