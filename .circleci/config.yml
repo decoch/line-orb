@@ -8,11 +8,10 @@ jobs:
     docker:
     - image: circleci/node
     steps:
-    - run: "echo 'testing building...'"
     - line/notify:
-        message: "hello from orb"
-        sticker-package-id: "1"
-        sticker-id: "1"
+        message: "notification test for the Line orb"
+        sticker-package-id: 1
+        sticker-id: 1
 
 workflows:
    main:
