@@ -14,6 +14,8 @@ jobs:
         username: "decoch"
     - line/notify:
         message: "hello from orb"
+        sticker-package-id: "1"
+        sticker-id: "1"
 
 workflows:
    main:
