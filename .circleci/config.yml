@@ -1,7 +1,6 @@
 version: 2.1
 
 orbs:
-  example: decoch/hello@dev:first
   line: decoch/line@dev:9
 
 jobs:
@@ -10,8 +9,6 @@ jobs:
     - image: circleci/node
     steps:
     - run: "echo 'testing building...'"
-    - example/hello:
-        username: "decoch"
     - line/notify:
         message: "hello from orb"
         sticker-package-id: "1"
