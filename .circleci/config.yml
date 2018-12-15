@@ -2,6 +2,7 @@ version: 2.1
 
 orbs:
   example: decoch/hello@dev:first
+  line: decoch/line@dev:first
 
 jobs:
   build:
@@ -10,7 +11,9 @@ jobs:
     steps:
     - run: "echo 'testing building...'"
     - example/hello:
-        username: "deccoch"
+        username: "decoch"
+    - line/notify:
+        message: "hello from orb"
 
 workflows:
    main:
