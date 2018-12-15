@@ -24,10 +24,6 @@ commands:
         description: Enter custom message.
         type: string
         default: Your job on CircleCI has completed.
-      mentions:
-        description: A comma separated list of user name. No spaces.
-        type: string
-        default: ""
     steps:
       - run:
           name: Line Notification
@@ -45,12 +41,5 @@ commands:
             else
               # Webhook properly set.
               echo Notifying Line
-              # Create Members string
-              if [ -n "<< parameters.mentions >>" ]; then
-                IFS="," read -ra LINE_MEMBERS \<<< "<< parameters.mentions >>"
-                for i in "${LINE_MEMBERS[@]}"; do
-                  LINE_MENTIONS="${LINE_MENTIONS}@${i} "
-                done
-              fi
               curl -X POST -H "Authorization: Bearer << parameters.token >>" -d "message=${LINE_MENTIONS}<< parameters.message >>" https://notify-api.line.me/api/notify
             fi
