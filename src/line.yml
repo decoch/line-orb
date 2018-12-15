@@ -27,11 +27,11 @@ commands:
       sticker-package-id:
         description: Enter custom sticker pacakge id.
         type: string
-        default:
+        default: ""
       sticker-id:
         description: Enter custom sticker id.
         type: string
-        default:
+        default: ""
     steps:
       - run:
           name: Line Notification
