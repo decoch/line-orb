@@ -41,23 +41,23 @@ commands:
               echo Bash not installed.
               exit 1
             fi
-            # Provide error if no token is set and error. Otherwise continue
-            if [ -z "<< parameters.token >>" ]; then
-              echo "NO LINE TOKEN SET"
-              echo "Please input your LINE_TOKEN value either in the settings for this project, or as a parameter for this orb."
-              exit 1
-            else
             if [ -z "<< parameters.sticker-package-id >>" ]; then
               if [ -n "<< parameters.sticker-id >>" ]; then
                 echo "NO STICKER_ID SET"
                 exit 1
               fi
-            else
+            fi
             if [ -z "<< parameters.sticker-id >>" ]; then
               if [ -n "<< parameters.sticker-package-id >>" ]; then
                 echo "NO STICKER PACKAGE ID SET"
                 exit 1
               fi
+            fi
+            # Provide error if no token is set and error. Otherwise continue
+            if [ -z "<< parameters.token >>" ]; then
+              echo "NO LINE TOKEN SET"
+              echo "Please input your LINE_TOKEN value either in the settings for this project, or as a parameter for this orb."
+              exit 1
             else
               # Webhook properly set.
               echo Notifying Line
