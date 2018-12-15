@@ -2,7 +2,7 @@ version: 2.1
 
 orbs:
   example: decoch/hello@dev:first
-  line: decoch/line@dev:7
+  line: decoch/line@dev:8
 
 jobs:
   build:
