@@ -9,6 +9,8 @@ jobs:
     - image: bash
     steps:
     - run: "echo 'testing building...'"
+    - example/hello:
+        username: "deccoch"
 
 workflows:
    main:
