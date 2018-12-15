@@ -2,7 +2,7 @@ version: 2.1
 
 orbs:
   example: decoch/hello@dev:first
-  line: decoch/line@dev:second
+  line: decoch/line@dev:3
 
 jobs:
   build:
@@ -14,6 +14,7 @@ jobs:
         username: "decoch"
     - line/notify:
         message: "hello from orb"
+        mentions: "柴田 直人,冨永 晃史"
 
 workflows:
    main:

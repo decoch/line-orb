@@ -1,5 +1,9 @@
 version: 2.1
 
+################################################
+## GitHub: https://github.com/decoch/line-orb ##
+################################################
+
 description: |
   Easily integrate custom Line notifications. Create custom messages for any job or receive status updates.
 
@@ -20,6 +24,10 @@ commands:
         description: Enter custom message.
         type: string
         default: Your job on CircleCI has completed.
+      mentions:
+        description: A comma separated list of user name. No spaces.
+        type: string
+        default: ""
     steps:
       - run:
           name: Line Notification
@@ -35,7 +43,14 @@ commands:
               echo "Please input your LINE_TOKEN value either in the settings for this project, or as a parameter for this orb."
               exit 1
             else
-              # Execute
+              # Webhook properly set.
               echo Notifying Line
-              curl -X POST -H "Authorization: Bearer << parameters.token >>" -d "message=<< parameters.message >>" https://notify-api.line.me/api/notify
+              # Create Members string
+              if [ -n "<< parameters.mentions >>" ]; then
+                IFS="," read -ra LINE_MEMBERS \<<< "<< parameters.mentions >>"
+                for i in "${LINE_MEMBERS[@]}"; do
+                  LINE_MENTIONS="${LINE_MENTIONS}<@${i}> "
+                done
+              fi
+              curl -X POST -H "Authorization: Bearer << parameters.token >>" -d "message=${LINE_MENTIONS}<< parameters.message >>" https://notify-api.line.me/api/notify
             fi
