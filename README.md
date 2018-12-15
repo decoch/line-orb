@@ -23,3 +23,5 @@ jobs:
 ## Generate line access token
 
 see: https://notify-bot.line.me/my/
+
+line sticker list: https://devdocs.line.me/files/sticker_list.pdf
