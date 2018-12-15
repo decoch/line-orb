@@ -1,18 +1,17 @@
 version: 2.1
 
 orbs:
-  line: decoch/line@0.0.2
+  line: decoch/line@0.0.3
 
 jobs:
   build:
     docker:
     - image: circleci/node
     steps:
-    - run: "echo 'testing building...'"
     - line/notify:
-        message: "hello from orb"
-        sticker-package-id: "1"
-        sticker-id: "1"
+        message: "Notification test for the Line orb"
+        sticker-package-id: '1'
+        sticker-id: '1'
 
 workflows:
    main:
