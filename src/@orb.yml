@@ -63,3 +63,23 @@ commands:
               echo Notifying Line
               curl -X POST -H "Authorization: Bearer << parameters.token >>" -d "message=${LINE_MENTIONS}<< parameters.message >>" -d "stickerPackageId=<< parameters.sticker-package-id >>" -d "stickerId=<< parameters.sticker-id >>" https://notify-api.line.me/api/notify
             fi
+
+#
+# Usage examples of Slack Orb
+#
+examples:
+  notify:
+    description: "Notify a line a custom message at any point in a job with this custom step. More docs here: https://github.com/decoch/line-orb"
+    usage:
+      version: 2.1
+      orbs:
+        line: decoch/line@volatile
+      jobs:
+        build:
+          docker:
+            - image: <docker image>
+          steps:
+            - line/notify:
+                message: "This is a custom message notification" # Optional: Enter your own message
+                sticker-package-id: "1" # Optional: Enter custom sticker package id for each notification.
+                sticker-id: "1" # Optional: Enter custom sticker package id for each notification.
