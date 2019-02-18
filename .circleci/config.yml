@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  line: decoch/line@0.0.3
+  line: decoch/line@1.0.0
 
 jobs:
   build:
